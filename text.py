@@ -2,7 +2,9 @@
 import pyautogui
 import cv2
 import numpy as np
- 
+import matplotlib.pyplot as plt
+
+
 # Specify resolution
 resolution = (1920, 1080)
  
@@ -16,7 +18,8 @@ filename = "Recording.avi"
 # value and experiment with it
 fps = 60.0
  
- 
+print(cv2.getBuildInformation())
+
 # Creating a VideoWriter object
 out = cv2.VideoWriter(filename, codec, fps, resolution)
  
@@ -51,28 +54,30 @@ while True:
 out.release()
 
 cap = cv2.VideoCapture(filename)
-print("hej")
+
 # Check if camera opened successfully
 if (cap.isOpened()== False): 
   print("Error opening video stream or file")
  
+ # Create an Empty window
+cv2.namedWindow("Frame", cv2.WINDOW_NORMAL)
+
+plt.figure()
+
 # Read until video is completed
 while(cap.isOpened()):
   # Capture frame-by-frame
   ret, frame = cap.read()
-  if ret == True:
- 
-    # Display the resulting frame
-    cv2.imshow('Frame',frame)
- 
-    # Press Q on keyboard to  exit
-    if cv2.waitKey(25) & 0xFF == ord('w'):
-      break
- 
-  # Break the loop
-  else: 
+
+  # Display the resulting frame
+  # cv2.imshow('Frame',frame)
+  plt.imshow(frame)
+
+  # Press Q on keyboard to  exit
+  if cv2.waitKey(25)== ord('w'):
     break
  
+
 # When everything done, release the video capture object
 cap.release()
 # Destroy all windows

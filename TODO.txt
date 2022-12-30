@@ -1,1 +1,4 @@
-make it work
+
+
+fix fps
+make position window live
