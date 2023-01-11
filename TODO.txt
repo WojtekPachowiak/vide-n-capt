@@ -1,4 +1,3 @@
 
-
-fix fps
-make position window live
+-stop video from disappearing when changing playback rate
+-make stepping through frames more responsive (one frame change doesn't change the video that much). maybe move by 200ms instead of one frame? Maybe make that adjustable?
